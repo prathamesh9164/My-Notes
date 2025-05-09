@@ -14,6 +14,10 @@ app.use(express.json())
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/notes', require('./routes/notes'))
 
+
 app.listen(port, () => {
   console.log(`i-Notebook Backend listening on port ${port}`)
 })
+
+const convertRoute = require('./routes/convert');
+app.use('/api/convert', convertRoute);

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(B:\REACT\inotebook\public\pexels-simon73-1323550.jpg);
 }
 
 code {
@@ -15,3 +16,9 @@ code {
 i{
   cursor:pointer;
 }
+
+.navbar-black {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+

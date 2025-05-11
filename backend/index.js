@@ -19,5 +19,8 @@ app.listen(port, () => {
   console.log(`i-Notebook Backend listening on port ${port}`)
 })
 
-const convertRoute = require('./routes/convert');
-app.use('/api/convert', convertRoute);
+app.use('/api/file', require('./routes/fileConverter'));
+
+
+// const convertRoute = require('./routes/convert');
+// app.use('/api/convert', convertRoute);

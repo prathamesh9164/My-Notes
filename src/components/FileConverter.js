@@ -1,73 +1,43 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import axios from 'axios';
 
-const FileConverter = () => {
+function FileConverter() {
   const [file, setFile] = useState(null);
-  const [format, setFormat] = useState("");
-  const [message, setMessage] = useState("");
+  const [targetFormat, setTargetFormat] = useState('pdf');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("Converting...");
-
     const formData = new FormData();
-    formData.append("file", file);
-    formData.append("targetFormat", format);
+    formData.append('file', file);
+    formData.append('targetFormat', targetFormat);
 
-    try {
-      const response = await fetch("http://localhost:5000/api/convert", {
-        method: "POST",
-        body: formData,
-      });
+    const res = await axios.post('http://localhost:5000/api/file/convert', formData, {
+  responseType: 'blob',
+});
 
-      if (!response.ok) throw new Error("Conversion failed");
 
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `converted.${format}`;
-      link.click();
-      setMessage("Conversion successful!");
-    } catch (err) {
-      setMessage("Error: " + err.message);
-    }
+    const url = window.URL.createObjectURL(new Blob([res.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `converted.${targetFormat}`);
+    document.body.appendChild(link);
+    link.click();
   };
 
   return (
-    <div className="container my-4">
-      <h2>File Converter</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="file"
-          className="form-control my-2"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-        <select name="format" id="format" class="form-select" required>
-          <option value="" disabled selected>
-            Select target format
-          </option>
-
-          <optgroup label="Document Formats">
-            <option value="pdf">PDF</option>
-            <option value="docx">DOCX</option>
-            <option value="txt">TXT</option>
-            <option value="html">HTML</option>
-          </optgroup>
-
-          <optgroup label="Spreadsheet Formats">
-            <option value="csv">CSV</option>
-          </optgroup>
-
-          <optgroup label="Image Formats">
-            <option value="jpg">JPG</option>
-          </optgroup>
-        </select>
-
-        <button className="btn btn-primary">Convert</button>
-      </form>
-      <p className="my-2">{message}</p>
-    </div>
+    <form onSubmit={handleSubmit} className="container my-3">
+      <h3>File Converter</h3>
+      <input type="file" onChange={(e) => setFile(e.target.files[0])} className="form-control" />
+      <select onChange={(e) => setTargetFormat(e.target.value)} className="form-select my-2">
+        <option value="pdf">PDF</option>
+        <option value="docx">DOCX</option>
+        <option value="txt">TXT</option>
+        <option value="png">PNG</option>
+        <option value="jpg">JPG</option>
+      </select>
+      <button className="btn btn-primary" type="submit">Convert</button>
+    </form>
   );
-};
+}
 
 export default FileConverter;

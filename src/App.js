@@ -9,7 +9,12 @@ import  Alert  from "./components/Alert";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { useState } from "react";
-import FileConverter from "./components/FileConverter";
+import FileConverterPage from './pages/FileConverterPage';
+
+
+
+// import FileConverter from './components/FileConverter';
+// import FileConverter from "./components/FileConverter";
 
 
 
@@ -36,7 +41,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login showAlert={showAlert}/>} />
           <Route path="/signup" element={<Signup showAlert={showAlert}/>} />
-          <Route path="/convert" element={<FileConverter />} />
+          <Route exact path="/fileconverter" element={<FileConverterPage />} />
+          {/* <Route path="/convert" element={<FileConverter />} /> */}
 
 
         </Routes>

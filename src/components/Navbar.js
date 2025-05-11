@@ -39,7 +39,7 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   className={`nav-link ${
                     location.pathname === "/About" ? "active" : ""
@@ -48,12 +48,9 @@ const Navbar = () => {
                 >
                   About
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/convert">
-                  Convert File
-                </Link>
-              </li>
+              </li> */}
+              <Link className="nav-link" to="/fileconverter">File Converter</Link>
+
             </ul>
             {!localStorage.getItem("token") ? (
               <form className="d-flex" role="search">

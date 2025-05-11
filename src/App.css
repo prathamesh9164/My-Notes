@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+/* src/App.css */
+body {
+  background: linear-gradient(to right, #a8c0ff, #3f87a6); /* Soft gradient from light blue to pastel green */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+  background: linear-gradient(to right, #d4e9f7, #b5d6e5); /* Pastel light blue to soft teal gradient */
+  padding: 10px 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-brand {
+  font-weight: bold;
+  color: #333;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar a {
+  color: #333 !important;
+}
+
+.navbar a:hover {
+  color: #5f6368 !important; /* Darker grey color on hover */
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: linear-gradient(to top right, #d4c9f9, #a8e0d6); /* Light lavender to soft mint green */
+  border: 1px solid #e1e1e1; /* Subtle soft border */
+  padding: 15px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333; /* Dark grey for readability */
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555; /* Softer grey for body text */
+}
+
+.card-footer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: flex-end;
+  background-color: transparent;
+  border-top: none;
+}
+
+button {
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 50px;
+  background-color: #a8e0d6; /* Soft mint green */
   color: white;
+  border: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #8fd3c7; /* Slightly darker mint on hover */
+  transform: translateY(-2px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+  margin-top: 40px;
+  background-color: #f7f2fa; /* Soft light lavender background */
+  padding: 30px;
+  border-radius: 12px;
 }
